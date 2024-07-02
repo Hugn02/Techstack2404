@@ -8,10 +8,8 @@
 <body>
 <script type="text/javascript">
 	function uniqueElements(A1, A2) {
-    // Tạo một đối tượng để đếm số lần xuất hiện của các phần tử
     let count = {};
 
-    // Đếm số lần xuất hiện của các phần tử trong A1
     A1.forEach(element => {
         if (count[element]) {
             count[element]++;
@@ -20,7 +18,6 @@
         }
     });
 
-    // Đếm số lần xuất hiện của các phần tử trong A2
     A2.forEach(element => {
         if (count[element]) {
             count[element]++;
@@ -29,7 +26,6 @@
         }
     });
 
-    // Lọc ra các phần tử chỉ xuất hiện một lần
     let result = [];
     for (let key in count) {
         if (count[key] === 1) {
@@ -40,11 +36,10 @@
     return result;
 }
 
-// Ví dụ sử dụng:
 let A1 = [1, 2, "a"];
 let A2 = [1, 3, "b"];
 let result = uniqueElements(A1, A2);
-console.log(result); // Output: [2, "a", 3, "b"]
+console.log(result); 
 
 </script>
 </body>
