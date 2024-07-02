@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  <h1>Quản lý Posts</h1>
+  <h2>Danh sách các bài viết</h2>
+  <div id="posts-list"></div>
+  <h2>Xem chi tiết một bài viết</h2>
+  <input type="number" id="post-id" placeholder="Nhập ID của bài viết">
+  <button onclick="viewPostDetails()">Xem chi tiết</button>
+  <div id="post-details"></div>
+  <h2>Tìm kiếm bài viết theo email của người dùng</h2>
+  <input type="email" id="user-email" placeholder="Nhập email của người dùng">
+  <button onclick="searchPostsByUserEmail()">Tìm kiếm</button>
+  <div id="search-results"></div>
+
+  <script src="./posts.js"></script>
+  <script src="./users.js"></script>
+  <script>
+    function displayPosts() {
+      const postsList = document.getElementById('posts-list');
+      postsList.innerHTML = '';
+
+      posts.forEach(post => {
+        const user = users.find(user => user.id === post.user_id);
+        const postElement = document.createElement('div');
+        postElement.className = 'post';
+        postElement.innerHTML = `
+          <div class="post-title">ID: ${post.id}, Title: ${post.title}, Created At: ${post.created_at}, User: ${user.first_name} ${user.last_name}</div>
+        `;
+        postsList.appendChild(postElement);
+      });
+    }
+
+    function viewPostDetails() {
+      const postId = document.getElementById('post-id').value;
+      const post = posts.find(post => post.id == postId);
+      const postDetails = document.getElementById('post-details');
+      postDetails.innerHTML = '';
+
+      if (!post) {
+        postDetails.innerHTML = `Post with ID ${postId} not found.`;
+        return;
+      }
+
+      const user = users.find(user => user.id === post.user_id);
+      postDetails.innerHTML = `
+        <div>ID: ${post.id}</div>
+        <div>Title: ${post.title}</div>
+        <div>Content: ${post.content}</div>
+        <div>Image: <a href="${post.image}" target="_blank">${post.image}</a></div>
+        <div>User: ${user.first_name} ${user.last_name}</div>
+        <div>Created At: ${post.created_at}</div>
+        <div>Updated At: ${post.updated_at}</div>
+      `;
+    }
+
+    function searchPostsByUserEmail() {
+      const email = document.getElementById('user-email').value;
+      const user = users.find(user => user.email === email);
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = '';
+
+      if (!user) {
+        searchResults.innerHTML = `User with email ${email} not found.`;
+        return;
+      }
+
+      const userPosts = posts.filter(post => post.user_id === user.id);
+      if (userPosts.length === 0) {
+        searchResults.innerHTML = `No posts found for user with email ${email}.`;
+        return;
+      }
+
+      userPosts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.className = 'post';
+        postElement.innerHTML = `
+          <div class="post-title">ID: ${post.id}, Title: ${post.title}, Created At: ${post.created_at}, User: ${user.first_name} ${user.last_name}</div>
+        `;
+        searchResults.appendChild(postElement);
+      });
+    }
+    displayPosts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<h2>Đăng nhập</h2>
+    <form id="loginForm">
+        <label for="loginEmail">Email:</label>
+        <input type="text" id="loginEmail" name="email"><br><br>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="password"><br><br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+    <p id="loginMessage"></p>
+
+    <h2>Đăng ký</h2>
+    <form id="registerForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="first_name"><br><br>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="last_name"><br><br>
+        <label for="registerEmail">Email:</label>
+        <input type="text" id="registerEmail" name="email"><br><br>
+        <label for="registerPassword">Password:</label>
+        <input type="password" id="registerPassword" name="password"><br><br>
+        <button type="button" onclick="register()">Register</button>
+    </form>
+    <p id="registerMessage"></p>
+
+    <h2>Tìm kiếm Users</h2>
+    <form id="searchForm">
+        <label for="keyword">Keyword:</label>
+        <input type="text" id="keyword" name="keyword"><br><br>
+        <button type="button" onclick="searchUsers()">Search</button>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Họ và tên</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="userList"></tbody>
+    </table>
+
+    <script type="text/javascript" src="./users.js"></script>
+
+</body>
+</html>

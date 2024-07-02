@@ -1,0 +1,96 @@
+
+.todo-app {  
+    padding: 20px;   
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s;
+}
+
+.tab.active {
+    border-bottom: 2px solid blue;
+}
+
+.todo-input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.todo-input input {
+    flex: 1;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.todo-input button {
+    padding: 10px;
+    background: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+.todo-list {
+    display: none;
+}
+
+.todo-list.active {
+    display: block;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.todo-item label {
+    flex: 1;
+}
+
+.todo-item input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+}
+
+.delete-all {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+    display: none;
+    position: relative;
+    left: 200px;
+}
